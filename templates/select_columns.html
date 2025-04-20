@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <title>Select Columns</title>
+</head>
+<body>
+    <h1>Select Common, Compare, and View Columns</h1>
+    <form action="/select-columns" method="POST">
+        <h2>Common Columns Mapping</h2>
+        {% for col in columns_map[columns_map|first] %}
+            <label>{{ col }}:</label>
+            <select name="common_mapping">
+                {% for fname, cols in columns_map.items() %}
+                    <option value="{{ fname }}:{{ col }}">{{ fname }} - {{ col }}</option>
+                {% endfor %}
+            </select><br>
+        {% endfor %}
+
+        <h2>Select Compare Columns</h2>
+        {% for fname, cols in columns_map.items() %}
+            <h3>{{ fname }}</h3>
+            {% for col in cols %}
+                <input type="checkbox" name="compare_columns" value="{{ col }}"> {{ col }}<br>
+            {% endfor %}
+        {% endfor %}
+
+        <h2>Select View Only Columns</h2>
+        {% for fname, cols in columns_map.items() %}
+            <h3>{{ fname }}</h3>
+            {% for col in cols %}
+                <input type="checkbox" name="view_columns" value="{{ col }}"> {{ col }}<br>
+            {% endfor %}
+        {% endfor %}
+
+        <br>
+        <input type="submit" value="Compare">
+    </form>
+</body>
+</html>

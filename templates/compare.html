@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Comparison Result</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .dataframe tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comparison Result</h1>
+    <div>{{ table | safe }}</div>
+    <br>
+    <a href="{{ download_link }}">Download Excel Report</a>
+</body>
+</html>
